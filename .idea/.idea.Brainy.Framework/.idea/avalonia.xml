@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Brainy.Framework.Testtool/TestPage/MainView.axaml" value="Brainy.Framework.Testtool/Brainy.Framework.Testtool.csproj" />
+        <entry key="Brainy.Framework.Testtool/TestPage2/MainView.axaml" value="Brainy.Framework.Testtool/Brainy.Framework.Testtool.csproj" />
+        <entry key="Brainy.Framework.Testtool/TestPage2/OtherView.axaml" value="Brainy.Framework.Testtool/Brainy.Framework.Testtool.csproj" />
+        <entry key="Brainy.Framework/MainWindow.axaml" value="Brainy.Framework.Testtool/Brainy.Framework.Testtool.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
