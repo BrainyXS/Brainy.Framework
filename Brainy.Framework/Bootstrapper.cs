@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Brainy.Framework.Contract;
+using Brainy.Framework.MainWindow;
+using Brainy.Framework.Navigation;
 
 namespace Brainy.Framework
 {
@@ -7,7 +9,7 @@ namespace Brainy.Framework
     {
         public static StartInformation Boot(Module m, string assembly)
         {
-            var window = new MainWindow();
+            var window = new MainWindow.MainWindow();
             var mainWindowViewModel = new MainWindowViewModel();
             window.DataContext = mainWindowViewModel;
             var nav = new NavigationService();

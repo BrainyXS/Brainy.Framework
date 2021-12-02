@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Brainy.Framework
+namespace Brainy.Framework.MainWindow
 {
     public partial class MainWindow : Window
     {

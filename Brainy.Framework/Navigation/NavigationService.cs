@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 using Avalonia.Controls;
 using Brainy.Framework.Contract;
+using Brainy.Framework.Contract.Navigation;
 
-namespace Brainy.Framework
+namespace Brainy.Framework.Navigation
 {
     public class NavigationService : INavigation
     {
@@ -12,8 +14,14 @@ namespace Brainy.Framework
         private IContainer _container;
         private string _assembly;
 
-        public async Task NavigateToAsync<T>() where T : ViewModelBase
+        public async Task NavigateToAsync<T>(params object[] parameter) where T : ViewModelBase
         {
+            var context = new NavigationContext();
+            foreach (var param in parameter)
+            {
+                context.AddParam(new KeyValuePair<Type, object>(param.GetType(), param));
+            }
+
             var viewModelType = typeof(T);
             var viewModelInstance = _container.Resolve<T>();
             viewModelInstance.Navigation = this;
@@ -35,8 +43,11 @@ namespace Brainy.Framework
             {
                 throw new Exception("Die View zu " + viewModelType.Name + " konnte nicht gefunden werden");
             }
+            if (viewModelInstance is INotifyOnNavigate navigateable)
+            {
+                await navigateable.OnNavigated(context);
+            }
 
-            await Task.CompletedTask;
         }
 
         public void StartLoading()

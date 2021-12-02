@@ -4,5 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Brainy.Framework.Testtool.TestPage2.OtherView">
-    Welcome to Avalonia!
+    <StackPanel>
+        <TextBlock Text="This is Page 2" Margin="15"/>
+        <Button Content="Go back again" Margin="15" Command="{Binding GoBackCommand}" />
+        <TextBlock Text="{Binding TestText}" Margin="15"/>
+
+    </StackPanel>
 </UserControl>

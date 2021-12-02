@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 
-namespace Brainy.Framework
+namespace Brainy.Framework.MainWindow
 {
     public class MainWindowViewModel
     {

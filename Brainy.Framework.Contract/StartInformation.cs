@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Brainy.Framework.Contract.Navigation;
 
 namespace Brainy.Framework.Contract
 {

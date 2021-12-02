@@ -1,23 +1,25 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using JetBrains.Annotations;
 
-namespace Brainy.Framework
+namespace Brainy.Framework.Commands
 {
     [UsedImplicitly]
-    public class RelayCommand : ICommand
+    public class AsyncRelayCommand : ICommand
     {
-        private readonly Action _execute;
+        private readonly Func<Task> _execute;
         private readonly Func<bool> _canExecute;
-        [UsedImplicitly]
 
-        public RelayCommand(Action execute)
+        [UsedImplicitly]
+        public AsyncRelayCommand(Func<Task> execute)
         {
             _execute = execute;
             _canExecute = () => true;
         }
+
         [UsedImplicitly]
-        public RelayCommand(Action execute, Func<bool> canExecute)
+        public AsyncRelayCommand(Func<Task> execute, Func<bool> canExecute)
         {
             _execute = execute;
             _canExecute = canExecute;
@@ -28,9 +30,9 @@ namespace Brainy.Framework
             return _canExecute();
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
-            _execute();
+            await _execute();
         }
 
         public event EventHandler CanExecuteChanged;
