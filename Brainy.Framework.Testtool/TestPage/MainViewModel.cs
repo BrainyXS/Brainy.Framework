@@ -1,7 +1,6 @@
 ﻿using System.Windows.Input;
 using Brainy.Framework.Contract;
 using Brainy.Framework.Testtool.TestPage2;
-using Framework.Contract;
 
 namespace Brainy.Framework.Testtool.TestPage
 {

@@ -16,11 +16,11 @@ namespace Brainy.Framework
         {
             var viewModelType = typeof(T);
             var viewModelInstance = _container.Resolve<T>();
-            ((ViewModelBase) viewModelInstance).Navigation = this;
+            viewModelInstance.Navigation = this;
             var viewName = viewModelType.Name.Substring(0, viewModelType.Name.Length - "Model".Length);
             var typeSearch = $"{viewModelType.Namespace}." + viewName + $", {_assembly}";
             var viewType = Type.GetType(typeSearch);
-            
+
             if (viewType != null)
             {
                 var viewInstance = Activator.CreateInstance(viewType) as UserControl;
@@ -36,6 +36,7 @@ namespace Brainy.Framework
                 throw new Exception("Die View zu " + viewModelType.Name + " konnte nicht gefunden werden");
             }
 
+            await Task.CompletedTask;
         }
 
         public void StartLoading()
